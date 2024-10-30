@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BancoApp - Operaciones Rápidas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/operaciones.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="operaciones.html"><i class="bi bi-bank"></i> BancoApp</a>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <h1 class="text-center">Operaciones Rápidas</h1>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#crearClienteModal"><i class="bi bi-person-plus-fill"></i> Crear Cliente</button>
+                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#crearCuentaModal"><i class="bi bi-bank"></i> Crear Cuenta</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4 justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Transacciones</h5>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-outline-primary" onclick="consultarSaldo()"><i class="bi bi-search"></i> Consultar Saldo</button>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#consignarModal"><i class="bi bi-piggy-bank"></i> Consignar</button>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#retirarModal"><i class="bi bi-cash-coin"></i> Retirar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Modal para crear cliente -->
+        <div class="modal fade" id="crearClienteModal" tabindex="-1" aria-labelledby="crearClienteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="crearClienteModalLabel">Crear Cliente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form onsubmit="return crearCliente(event)">
+                            <div class="mb-3">
+                                <label for="nombreCliente" class="form-label">Nombre del Cliente</label>
+                                <input type="text" class="form-control" id="nombreCliente" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="apellidoCliente" class="form-label">Apellido del Cliente</label>
+                                <input type="text" class="form-control" id="apellidoCliente" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="direccionCliente" class="form-label">Dirección del Cliente</label>
+                                <input type="text" class="form-control" id="direccionCliente" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="identificacionCliente" class="form-label">Identificación del Cliente</label>
+                                <input type="text" class="form-control" id="identificacionCliente" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Crear Cliente</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para crear cuenta -->
+        <div class="modal fade" id ="crearCuentaModal" tabindex="-1" aria-labelledby="crearCuentaModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="crearCuentaModalLabel">Crear Cuenta</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form onsubmit="return crearCuenta(event)">
+                            <div class="mb-3">
+                                <label for="tipoCuenta" class="form-label">Tipo de Cuenta</label>
+                                <select class="form-select" id="tipoCuenta" required>
+                                    <option value="">Seleccione un tipo</option>
+                                    <option value="corriente">Cuenta Corriente</option>
+                                    <option value="ahorros">Cuenta de Ahorros</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="numeroCuenta" class="form-label">Número de Cuenta</label>
+                                <input type="text" class="form-control" id="numeroCuenta" readonly>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Crear Cuenta</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para consignar -->
+        <div class="modal fade" id="consignarModal" tabindex="-1" aria-labelledby="consignarModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="consignarModalLabel">Consignar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form onsubmit="return consignar(event)">
+                            <div class="mb-3">
+                                <label for="montoConsignar" class="form-label">Monto a consignar</label>
+                                <input type="number" class="form-control" id="montoConsignar" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Consignar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para retirar -->
+        <div class="modal fade" id="retirarModal" tabindex="-1" aria-labelledby="retirarModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="retirarModalLabel">Retirar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form onsubmit="return retirar(event)">
+                            <div class="mb-3">
+                                <label for="montoRetirar" class="form-label">Monto a retirar</label>
+                                <input type="number" class="form-control" id="montoRetirar" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Retirar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 75eeb028e7c11e62c60dbd1c358884f3e6cdb1b8
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li>Tel: +57 3146577233</li>
+                        <li>Email: darandre.13@gmail.com</li>
+                        <li>Dirección: Calle 72a #91b -47, Medellín, Colombia</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces Útiles</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Inicio</a></li>
+                        <li><a href="servicios.html" class="text-white">Servicios</a></li>
+                        <li><a href="contacto.html" class="text-white">Contacto</a></li>
+                        <li><a href="faq.html" class="text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Síguenos</h5>
+                    <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-2"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white me-2"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-3">
+            <p>&copy; 2024 BancoApp. Todos los derechos reservados.</p>
+        </div>
+<<<<<<< HEAD
+=======
+=======
+        <p>&copy; 2024 BancoApp. Todos los derechos reservados.</p>
+>>>>>>> 02f3d5a0e63a8cdc7dabf8dfc1dca2be5ce6732e
+>>>>>>> 75eeb028e7c11e62c60dbd1c358884f3e6cdb1b8
+    </footer>
+
+    <script src="../js/operaciones.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

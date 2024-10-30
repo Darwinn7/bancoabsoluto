@@ -1,0 +1,100 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    color: #004085;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+    background-color: #004085;
+    border-color: #004085;
+}
+
+.btn-primary:hover {
+    background-color: #003366;
+    border-color: #003366;
+}
+
+.btn-link {
+    color: #004085;
+}
+
+.btn-link:hover {
+    color: #003366;
+    text-decoration: none;
+}
+
+.modal-header {
+    background-color: #004085;
+    color: #fff;
+}
+
+.modal-footer {
+    justify-content: center;
+}
+
+.modal-title {
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* Estilos para el carrusel */
+.carousel-item img {
+    width: 80%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+    border-radius: 1%;
+}
+
+.carousel-caption h5 {
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+.carousel-caption p {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #000000;
+    border-radius: 50%;
+    padding: 1rem;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: #000000;
+}
+
